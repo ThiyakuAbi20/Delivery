@@ -2,37 +2,176 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.navbar {
+  display: flex;
+  align-items: center; 
+  justify-content: space-between; 
+  height: 60px;
+  background-color: rgb(233, 213, 252);
+  position: relative;
+  max-width: 100%;
+  padding: 0 20px; 
+  box-sizing: border-box; 
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.navbar img {
+  width: 50px; 
+  height: 50px;
+  margin: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+   
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.navbar h3 {
+  color: rgb(97, 58, 134);
+  font-family: 'Pacifico', cursive;
+  text-shadow: 2px 2px 4px rgb(212, 40, 167);
+  cursor: pointer;
+}
+
+.navbar button {
+  background-color: rgb(248, 248, 248);
+  color: rgb(97, 58, 134);
+  font-size: 15px;
+  cursor: pointer;
+  border-radius: 20px;
+  font-family: 'Pacifico', cursive;
+  text-shadow: 2px 2px 4px rgb(212, 40, 167);
+  border: 2px solid rgb(97, 58, 134); 
+  padding: 10px 20px;
+}
+
+.navbar ul {
+  list-style-type: none; 
+  margin: 0;
+  padding: 0; 
+  display: flex; 
+  justify-content: center; 
+  gap: 20px; 
+  flex-grow: 1; 
+}
+
+.navbar li {
+  display: inline-block; 
+}
+
+.navbar li a {
+  color: black; 
+  text-align: center;
+  padding: 10px 15px; 
+  border-radius: 20px; 
+  transition: background-color 0.3s; 
+  border: 2px solid transparent;
+}
+
+.navbar li a:hover {
+  color: rgb(82, 27, 95);  
+  
+}
+.imagebar{
+  background-color: rgb(225, 206, 241);
+  height:500px;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+}
+.imagebar img {
+  align-items: center;
+  margin-top: 10px;
+  margin-bottom: 20px;
+
+}
+.imagebar img:hover {
+  align-items: center;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  width: 1000px;
+  height: 400px;
+
+}
+.imagebar button {
+  background-color: rgb(248, 248, 248);
+  color: rgb(97, 58, 134);
+  font-size: 15px;
+  cursor: pointer;
+  border-radius: 20px;
+  font-family: 'Pacifico', cursive;
+  text-shadow: 2px 2px 4px rgb(212, 40, 167);
+  border: 2px solid rgb(97, 58, 134); 
+  padding: 10px 20px;
+  
+}
+.imagebar h4{
+  color: rgb(97, 58, 134);
+  font-family: 'Pacifico', cursive;
+  margin-top: 20px;
+  font-size: 20px;
+}
+.textbar {
+  display: flex; 
+  align-items: flex-start; /* Aligns items at the start of the container */
+  justify-content: space-between; /* Optional: adds space between elements */
+  padding: 20px; 
+  margin-left: 30px; 
 }
 
-.App-link {
-  color: #61dafb;
+.text1bar, .text2bar, .text3bar {
+  margin-right: 20px; /* Space between text sections */
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
+.text1bar {
+  flex: 0.5;
+  text-align: left;/* Give it more space compared to the others */
+}
+.text1bar h2{
+  font-family: 'Times New Roman', Times, serif;
+  
+}
+.text1bar h1{
+  font-family: 'Times New Roman', Times, serif;
+  color: blueviolet;
+}
+.text1bar p{
+  font-size: 20px;
+}
+
+.text2bar{
+  flex: 1; /* Allows them to take equal smaller space */
+  max-width: 400px;
+  padding: 7px; 
+  background-color: rgba(143, 183, 238, 0.8); 
+  border: 2px solid rgb(49, 113, 186);; 
+  border-radius: 10px; 
+  
+}
+.text3bar {
+  flex: 1; /* Allows them to take equal smaller space */
+  max-width: 350px;
+  padding: 7px; 
+  background-color: rgba(228, 176, 107, 0.8); 
+  border: 2px solid rgb(223, 136, 21); 
+  border-radius: 10px; 
+}
+
+.text2bar h3{
+  color:rgb(49, 113, 186);
+  font-family: 'Times New Roman', Times, serif;
+}
+.text3bar h3 {
+  color: rgb(155, 95, 15);
+  font-family: 'Times New Roman', Times, serif; 
+}
+
+.text2bar p,
+.text3bar p {
+  color: rgb(12, 3, 3); 
+}
+
+/* Optional: Adjust for smaller screens */
+@media (max-width: 768px) {
+  .textbar {
+    flex-direction: column; /* Stacks vertically on small screens */
   }
 }
