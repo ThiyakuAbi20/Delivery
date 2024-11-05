@@ -7,7 +7,7 @@
   align-items: center; 
   justify-content: space-between; 
   height: 60px;
-  background-color: rgb(233, 213, 252);
+  background-color:  #b6e2bf;
   position: relative;
   max-width: 100%;
   padding: 0 20px; 
@@ -19,26 +19,25 @@
   height: 50px;
   margin: 10px;
   border-radius: 10px;
-  cursor: pointer;
-   
+  cursor: pointer;  
 }
 
 .navbar h3 {
-  color: rgb(97, 58, 134);
+  color: rgb(22, 100, 8);
   font-family: 'Pacifico', cursive;
-  text-shadow: 2px 2px 4px rgb(212, 40, 167);
+  text-shadow: 2px 2px 4px rgb(23, 232, 72);
   cursor: pointer;
 }
 
 .navbar button {
   background-color: rgb(248, 248, 248);
-  color: rgb(97, 58, 134);
+  color: rgb(22, 100, 8);
   font-size: 15px;
   cursor: pointer;
   border-radius: 20px;
   font-family: 'Pacifico', cursive;
-  text-shadow: 2px 2px 4px rgb(212, 40, 167);
-  border: 2px solid rgb(97, 58, 134); 
+  text-shadow: 2px 2px 4px rgb(23, 232, 72);
+  border: 2px solid rgb(22, 100, 8); 
   padding: 10px 20px;
 }
 
@@ -66,88 +65,90 @@
 }
 
 .navbar li a:hover {
-  color: rgb(82, 27, 95);  
-  
+  color: rgb(15, 182, 107);  
 }
-.imagebar{
-  background-color: rgb(225, 206, 241);
-  height:500px;
+
+.imagebar {
+  background-color: rgb(230, 253, 222);
+  height: 500px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
+
 .imagebar img {
   align-items: center;
   margin-top: 10px;
   margin-bottom: 20px;
-
+  transition: transform 0.3s; /* Add transition for hover effect */
 }
+
 .imagebar img:hover {
-  align-items: center;
-  margin-top: 10px;
-  margin-bottom: 20px;
+  transform: scale(1.05); /* Scale effect on hover */
   width: 1000px;
   height: 400px;
-
 }
+
 .imagebar button {
   background-color: rgb(248, 248, 248);
-  color: rgb(97, 58, 134);
+  color: rgb(22, 100, 8);
   font-size: 15px;
   cursor: pointer;
   border-radius: 20px;
   font-family: 'Pacifico', cursive;
-  text-shadow: 2px 2px 4px rgb(212, 40, 167);
-  border: 2px solid rgb(97, 58, 134); 
+  text-shadow: 2px 2px 4px rgb(23, 232, 72);
+  border: 2px solid rgb(22, 100, 8); 
   padding: 10px 20px;
-  
 }
-.imagebar h4{
-  color: rgb(97, 58, 134);
+
+.imagebar h4 {
+  color: rgb(22, 100, 8);
   font-family: 'Pacifico', cursive;
   margin-top: 20px;
   font-size: 20px;
 }
+
 .textbar {
   display: flex; 
-  align-items: flex-start; /* Aligns items at the start of the container */
-  justify-content: space-between; /* Optional: adds space between elements */
+  align-items: flex-start; 
+  justify-content: space-between; 
   padding: 20px; 
   margin-left: 30px; 
 }
 
 .text1bar, .text2bar, .text3bar {
-  margin-right: 20px; /* Space between text sections */
+  margin-right: 20px; 
 }
 
 .text1bar {
   flex: 0.5;
-  text-align: left;/* Give it more space compared to the others */
+  text-align: left;
 }
-.text1bar h2{
+
+.text1bar h2, .text1bar h1 {
   font-family: 'Times New Roman', Times, serif;
-  
 }
-.text1bar h1{
-  font-family: 'Times New Roman', Times, serif;
-  color: blueviolet;
+
+.text1bar h1 {
+  color: rgb(22, 100, 8);
 }
-.text1bar p{
+
+.text1bar p {
   font-size: 20px;
 }
 
-.text2bar{
-  flex: 1; /* Allows them to take equal smaller space */
+.text2bar {
+  flex: 1; 
   max-width: 400px;
   padding: 7px; 
   background-color: rgba(143, 183, 238, 0.8); 
-  border: 2px solid rgb(49, 113, 186);; 
+  border: 2px solid rgb(49, 113, 186); 
   border-radius: 10px; 
-  
 }
+
 .text3bar {
-  flex: 1; /* Allows them to take equal smaller space */
+  flex: 1; 
   max-width: 350px;
   padding: 7px; 
   background-color: rgba(228, 176, 107, 0.8); 
@@ -155,10 +156,11 @@
   border-radius: 10px; 
 }
 
-.text2bar h3{
-  color:rgb(49, 113, 186);
+.text2bar h3 {
+  color: rgb(49, 113, 186);
   font-family: 'Times New Roman', Times, serif;
 }
+
 .text3bar h3 {
   color: rgb(155, 95, 15);
   font-family: 'Times New Roman', Times, serif; 
@@ -169,9 +171,143 @@
   color: rgb(12, 3, 3); 
 }
 
-/* Optional: Adjust for smaller screens */
 @media (max-width: 768px) {
   .textbar {
-    flex-direction: column; /* Stacks vertically on small screens */
+    flex-direction: column; 
   }
+}
+
+.imageslider {
+  width: 100%;
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden; 
+  background-color: rgb(230, 253, 222);;
+}
+
+.slider-image {
+  width: 100%;
+  height: auto;
+  max-height: 600px; 
+  object-fit: cover; 
+  transition: opacity 1s ease-in-out; 
+}
+
+.footer {
+  background-color: white;
+}
+.footer img.driver{
+  width: 400px;
+  height: 400px;
+  margin: 10px;
+  border-radius: 0px;
+  margin-bottom: 30px;
+  margin-left: 1200px;
+  margin-top: 100px;
+
+}
+.socialapp img {
+  width: 40px; 
+  height: 40px;
+  margin: 20px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.footer button {
+  margin-top: 10px;
+  color: rgb(22, 100, 8);
+  background-color: white;
+  font-size: 20px;
+  cursor: pointer;
+  margin-left: 10px;
+  border-radius: 20px;
+  font-family: 'Pacifico', cursive;
+  text-shadow: 2px 2px 4px rgb(23, 232, 72);
+  border: 2px solid rgb(22, 100, 8); 
+  padding: 10px 90px;
+}
+
+.address, .phone, .email {
+  display: flex;
+  align-items: center;   
+  margin-top: 20px;
+  margin-bottom: 10px;
+  margin-left: 10px;
+}
+
+.address img, .phone img, .email img {
+  width: 30px; 
+  height: 30px;
+  border-radius: 5px; 
+}
+
+.address p, .phone p, .email p {
+  margin: 10px; 
+  font-size: 16px;
+  color: rgb(8, 9, 8);
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.Formstyle {
+  background-color: #b6e2bf; 
+  padding: 20px;            
+  border-radius: 8px;       
+  box-shadow: 0 2px 5px rgba(27, 124, 58, 0.901); 
+  width: 70%;
+  height: 450px;
+  margin-left: 200px;
+  margin-bottom: 20px;   
+  
+}
+
+.Formstyle h2 {
+  font-size: 24px;          
+  color: #069222;              
+  margin-bottom: 15px;      
+  text-align: center;
+  font-family: 'Times New Roman', Times, serif;       
+}
+
+.Formstyle label {
+  color: #069222;
+  display: block;           
+  font-weight: bold;       
+  margin-bottom: 5px;
+  font-family: 'Times New Roman', Times, serif;      
+}
+
+.Formstyle textarea {
+  width: 90%;             
+  padding: 10px;           
+  border: 2px solid rgb(22, 100, 8);  
+  border-radius: 30px;      
+  resize: vertical;        
+  margin-bottom: 15px; 
+}
+
+.Formstyle input[type="text"],
+.Formstyle input[type="email"] {
+  font-family: 'Times New Roman', Times, serif;
+  width: 90%;             
+  padding: 15px;           
+  border: 2px solid rgb(22, 100, 8); 
+  border-radius: 50px;      
+  margin-bottom: 15px;      
+}
+
+.Formstyle button[type="submit"] {
+  margin-top: 10px;
+  background-color: rgb(248, 248, 248);
+  color: rgb(22, 100, 8);
+  font-size: 20px;
+  cursor: pointer;
+  margin-left: 4px;
+  border-radius: 20px;
+  font-family: 'Pacifico', cursive;
+  text-shadow: 2px 2px 4px rgb(23, 232, 72);
+  border: 2px solid rgb(22, 100, 8); 
+  padding: 10px 90px;
 }
