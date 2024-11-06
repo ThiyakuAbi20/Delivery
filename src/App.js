@@ -102,7 +102,7 @@ function App() {
           <Route path="/contact" element={<ContactUs />} />
         </Routes>
       </div>
-
+      
       <div className='footer'>
         <div className='footer-content'>
           <div className='left-section'>
@@ -147,6 +147,7 @@ function App() {
           <p>&copy; 2024 Northway Family Mart. All rights reserved.</p>
         </div>
       </div>
+     
     </Router>
   );
 }

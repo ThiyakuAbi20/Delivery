@@ -1,82 +1,118 @@
-import React, { useState } from 'react';
-import profile1 from '../images/images7.jpg';
-import profile2 from '../images/profile2.png';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+
+import profile1 from '../images/images7.jpg';  // Adjust the path as necessary
+import editIcon from '../images/edit.png';  // Edit icon
+import deleteIcon from '../images/delete.png';  // Delete icon
 
 function Drivers() {
-  const [isModalOpen, setIsModalOpen] = useState(false); // Modal state
-  const [drivers, setDrivers] = useState([
-    { id: 'D1000101', name: 'Abishek', contact: '0773423512', email: 'abishek@gmail.com', profile: profile1, type: 'express' },
-    { id: 'D1000102', name: 'Sarah', contact: '0776821148', email: 'sarah23@live.it', profile: profile2,type: 'normal' },
-    { id: 'D1000103', name: 'John', contact: '0776832145', email: 'john.doe@example.com', profile: profile1 ,type: 'normal'},
-    { id: 'D1000104', name: 'Emma', contact: '0776832146', email: 'emma.doe@example.com', profile: profile2 ,type: 'express'},
-  ]);
-  const [newDriverImage, setNewDriverImage] = useState(null); // Store new profile image
-  const [driverId, setDriverId] = useState(""); // New Driver ID state
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [drivers, setDrivers] = useState([]);
+  const [newDriverImage, setNewDriverImage] = useState(null);
+  const [driverType, setDriverType] = useState('normal');
+  const [error, setError] = useState(null);
+  const [editingDriver, setEditingDriver] = useState(null);
+
+  useEffect(() => {
+    axios.get('http://localhost:3001/drivers')
+      .then((response) => setDrivers(response.data))
+      .catch((error) => console.error('Error fetching drivers:', error));
+  }, []);
 
   const handleAddDriverClick = () => {
-    setIsModalOpen(true); // Open modal
+    setIsModalOpen(true);
+    setEditingDriver(null); // Reset editing state for new driver
   };
 
-  const handleCloseModal = () => {
-    setIsModalOpen(false); // Close modal
+  const handleEditDriverClick = (driver) => {
+    setEditingDriver(driver);
+    setIsModalOpen(true);
   };
 
-  // Generate a new Driver ID by checking the last one and incrementing it
+  const handleDeleteDriverClick = (driverId) => {
+    axios.delete(`http://localhost:3001/drivers/${driverId}`)
+      .then(() => {
+        setDrivers(drivers.filter(driver => driver.id !== driverId));
+      })
+      .catch((error) => {
+        console.error('Error deleting driver:', error);
+        setError('Error deleting driver.');
+      });
+  };
+
   const generateDriverId = () => {
     const lastDriver = drivers[drivers.length - 1];
-    const lastId = lastDriver ? parseInt(lastDriver.id.slice(1)) : 1000100; // Extract numeric part
-    const newId = `D${lastId + 1}`; // Increment and return new ID
+    const lastId = lastDriver ? parseInt(lastDriver.id.slice(1)) : 1000100;
+    const newId = `D${lastId + 1}`;
     return newId;
   };
 
   const handleAddDriverSubmit = (event) => {
     event.preventDefault();
-
-    const newDriverId = generateDriverId(); // Generate unique Driver ID
-
+    const newDriverId = editingDriver ? editingDriver.id : generateDriverId();
     const newDriver = {
       id: newDriverId,
       name: event.target.driverName.value,
       contact: event.target.contact.value,
       email: event.target.email.value,
-      profile: newDriverImage || profile1, // Use uploaded image or default image
+      profile: newDriverImage || profile1,
+      type: driverType,
     };
 
-    // Add the new driver to the list
-    setDrivers((prevDrivers) => [...prevDrivers, newDriver]);
-    setIsModalOpen(false); // Close the modal after adding the driver
+    const request = editingDriver
+      ? axios.put(`http://localhost:3001/drivers/${editingDriver.id}`, newDriver) // Update existing driver
+      : axios.post('http://localhost:3001/drivers', newDriver); // Add new driver
+
+    request
+      .then((response) => {
+        if (editingDriver) {
+          setDrivers(drivers.map(driver => driver.id === response.data.id ? response.data : driver));
+        } else {
+          setDrivers([...drivers, response.data]);
+        }
+        setIsModalOpen(false);
+        setError(null);
+      })
+      .catch((error) => {
+        setError(`Error: ${error.response ? error.response.data.message : error.message}`);
+      });
   };
 
   const handleImageChange = (event) => {
-    const file = event.target.files[0]; // Get the selected file
+    const file = event.target.files[0];
     if (file) {
       const reader = new FileReader();
       reader.onloadend = () => {
-        setNewDriverImage(reader.result); // Set the uploaded image as the new profile image
+        setNewDriverImage(reader.result);
       };
-      reader.readAsDataURL(file); // Read the file as a data URL (base64)
+      reader.readAsDataURL(file);
     }
+  };
+
+  const handleTypeChange = (event) => {
+    setDriverType(event.target.checked ? 'express' : 'normal');
   };
 
   return (
     <div className={`driver-page ${isModalOpen ? 'blurred' : ''}`}>
-      <h1>Drivers Info. . .</h1>
+      <h1>Drivers Info</h1>
       <p>Details about drivers for delivery of parcels on time.</p>
       <button type="button" onClick={handleAddDriverClick}>Add New Driver</button>
-      
+
       <table className="driver-table">
         <thead>
           <tr>
             <th>Profile</th>
             <th>Driver ID</th>
             <th>Driver Name</th>
-            <th>Contact Number</th>
+            <th>Contact</th>
             <th>Email</th>
             <th>Type</th>
+            <th>Action</th>
           </tr>
         </thead>
         <tbody>
-          {drivers.map(driver => (
+          {drivers.map((driver) => (
             <tr key={driver.id}>
               <td><img className="driver-image" src={driver.profile} alt={driver.name} /></td>
               <td>{driver.id}</td>
@@ -84,35 +120,48 @@ function Drivers() {
               <td>{driver.contact}</td>
               <td>{driver.email}</td>
               <td>{driver.type}</td>
+              <td>
+                <img 
+                  src={editIcon} 
+                  alt="Edit" 
+                  className="action-icon" 
+                  onClick={() => handleEditDriverClick(driver)} 
+                />
+                <img 
+                  src={deleteIcon} 
+                  alt="Delete" 
+                  className="action-icon" 
+                  onClick={() => handleDeleteDriverClick(driver.id)} 
+                />
+              </td>
             </tr>
           ))}
         </tbody>
       </table>
 
-      {/* Modal for adding a new driver */}
       {isModalOpen && (
         <div className="modal">
           <div className="modal-content">
-            <h2>Add New Driver</h2>
+            <h2>{editingDriver ? 'Edit Driver' : 'Add New Driver'}</h2>
+            {error && <p style={{ color: 'red' }}>{error}</p>}
             <form onSubmit={handleAddDriverSubmit}>
-              
               <label>
-                Driver ID: <span>{generateDriverId()}</span> {/* Display generated ID */}
+                Driver ID: <span>{editingDriver ? editingDriver.id : generateDriverId()}</span>
               </label>
               <br />
               <label>
                 Driver Name:
-                <input type="text" name="driverName" required />
+                <input type="text" name="driverName" defaultValue={editingDriver?.name || ''} required />
               </label>
               <br />
               <label>
-                Contact Number:
-                <input type="text" name="contact" required />
+                Contact:
+                <input type="text" name="contact" defaultValue={editingDriver?.contact || ''} required />
               </label>
               <br />
               <label>
                 Email:
-                <input type="email" name="email" required />
+                <input type="email" name="email" defaultValue={editingDriver?.email || ''} required />
               </label>
               <br />
               <label>
@@ -122,11 +171,14 @@ function Drivers() {
               <br />
               {newDriverImage && <img src={newDriverImage} alt="New Profile" className="preview-image" />}
               <br />
-
-              {/* Buttons in the same row with space */}
+              <label>
+                <input type="checkbox" checked={driverType === 'express'} onChange={handleTypeChange} />
+                Tap if express type
+              </label>
+              <br />
               <div className="button-container">
-                <button >Add Driver</button>
-                <button onClick={handleCloseModal}>Close</button>
+                <button type="submit">{editingDriver ? 'Update Driver' : 'Add Driver'}</button>
+                <button type="button" onClick={() => setIsModalOpen(false)}>Close</button>
               </div>
             </form>
           </div>

@@ -56,12 +56,12 @@
 }
 
 .navbar li a {
-  color: black; 
-  text-align: center;
-  padding: 10px 15px; 
+  color: rgb(22, 100, 8); 
+  padding: 10px 50px; 
   border-radius: 20px; 
   transition: background-color 0.3s; 
   border: 2px solid transparent;
+
 }
 
 .navbar li a:hover {
@@ -135,7 +135,7 @@
 }
 
 .text1bar p {
-  font-size: 24px;
+  font-size: 22px;
   font-family: 'Times New Roman', Times, serif;
 }
 
@@ -521,7 +521,7 @@ button:hover {
 }
 
 .driver-table th {
-  background-color: #4CAF50;
+  background-color:  #0c692d;
   color: white;
 }
 
@@ -578,7 +578,8 @@ button:hover {
 }
 .button-container button{
   margin: auto;
-  margin-right: 5px;
+  margin-right: 15px;
+ 
 }
 
 .preview-image {
@@ -597,4 +598,56 @@ button:hover {
 .modal-content {
   position: relative;
   z-index: 1000; /* Ensure modal content is above the blur */
+}
+.orders-container {
+  padding: 20px;
+  background-color: #f4f4f9;
+}
+
+.orders-header {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* Table Styles */
+.orders-table {
+  width: 80%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+  margin-left: 160px;
+}
+
+.orders-table-header {
+  background-color: #0c692d;
+  color: white;
+}
+
+.orders-table-cell {
+  padding: 10px;
+  text-align: center;
+  border: 1px solid #ddd;
+}
+
+.orders-table-row:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.orders-driver-select {
+  padding: 5px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 100%;
+}
+
+.orders-driver-select:focus {
+  outline: none;
+  border-color: #266d2f;
+}
+
+/* Optional: Style for the dropdown button */
+.orders-driver-select option {
+  padding: 5px;
 }
