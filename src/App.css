@@ -69,7 +69,7 @@
 }
 
 .imagebar {
-  background-color: rgb(230, 253, 222);
+  background-color: whitesmoke;
   height: 500px;
   display: flex;
   flex-direction: column;
@@ -135,7 +135,8 @@
 }
 
 .text1bar p {
-  font-size: 20px;
+  font-size: 24px;
+  font-family: 'Times New Roman', Times, serif;
 }
 
 .text2bar {
@@ -184,7 +185,7 @@
   justify-content: center;
   align-items: center;
   overflow: hidden; 
-  background-color: rgb(230, 253, 222);;
+  background-color: whitesmoke;
 }
 
 .slider-image {
@@ -194,62 +195,122 @@
   object-fit: cover; 
   transition: opacity 1s ease-in-out; 
 }
-
 .footer {
-  background-color: white;
-}
-.footer img.driver{
-  width: 400px;
-  height: 400px;
-  margin: 10px;
-  border-radius: 0px;
-  margin-bottom: 30px;
-  margin-left: 1200px;
-  margin-top: 100px;
-
-}
-.socialapp img {
-  width: 40px; 
-  height: 40px;
-  margin: 20px;
-  border-radius: 10px;
-  cursor: pointer;
+  background-color: #dddedd;
+  color: black;
+  padding: 40px;
+  font-family: 'Roboto', sans-serif;
+  border-top: 5px solid rgb(22, 100, 8);
+  height: 250px;
 }
 
-.footer button {
-  margin-top: 10px;
+.footer-content {
+  display: flex;
+  justify-content: space-between; /* Space out the sections evenly */
+  align-items: flex-start; /* Align items to the start */
+  max-width: 1200px;
+  margin: 0 auto; /* Center the footer content */
+  
+}
+
+.left-section, .right-section, .driver-image {
+  flex: 1; /* Make each section take equal space */
+}
+
+.left-section {
+  text-align: left;
+}
+
+.left-section h4 {
+  font-size: 25px;
+  margin-bottom: 15px;
   color: rgb(22, 100, 8);
-  background-color: white;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.social-icons {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 20px;
+  
+}
+
+.social-icons a img {
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.social-icons a:hover img {
+  transform: scale(1.1);
+  box-shadow: 0 4px 10px rgb(22, 100, 8);
+}
+.contact-button{
+  margin-top: 10px;
+  background-color: rgb(248, 248, 248);
+  color: rgb(22, 100, 8);
   font-size: 20px;
   cursor: pointer;
-  margin-left: 10px;
+  margin-left: 0;
   border-radius: 20px;
   font-family: 'Pacifico', cursive;
   text-shadow: 2px 2px 4px rgb(23, 232, 72);
   border: 2px solid rgb(22, 100, 8); 
-  padding: 10px 90px;
+  padding: 10px 40px;
+}
+.right-section p{
+  color: rgb(22, 100, 8);
+  font-family: 'Pacifico', cursive;
+  font-size: 20p;
 }
 
-.address, .phone, .email {
+.right-section {
   display: flex;
-  align-items: center;   
-  margin-top: 20px;
-  margin-bottom: 10px;
-  margin-left: 10px;
+  flex-direction: column;
+  gap: 15px;
 }
 
-.address img, .phone img, .email img {
-  width: 30px; 
+.contact-info div {
+  display: flex;
+  align-items: center;
+}
+
+.contact-info img {
+  display: block;
+  width: 30px;
   height: 30px;
-  border-radius: 5px; 
+  margin-left: 200px;
+  margin-right: 12px;
+  border-radius: 20px;
 }
 
-.address p, .phone p, .email p {
-  margin: 10px; 
-  font-size: 16px;
-  color: rgb(8, 9, 8);
-  font-family: 'Times New Roman', Times, serif;
+/* Styling for the driver image */
+.driver-image {
+  display: flex;
+  justify-content: center; /* Center the image within its section */
 }
+
+.driver-image img {
+  width: 400px;
+  height: 220px;
+  border-radius: 20px;
+  margin-left: 200px;
+ 
+}
+
+.footer-bottom {
+  margin-top: 30px;
+  text-align: center;
+  font-size: 14px;
+  color: #0c0c0c;
+}
+
+.footer-bottom p {
+  margin: 0;
+}
+
+
 
 .Formstyle {
   background-color: #b6e2bf; 
@@ -310,4 +371,230 @@
   text-shadow: 2px 2px 4px rgb(23, 232, 72);
   border: 2px solid rgb(22, 100, 8); 
   padding: 10px 90px;
+}
+/* Style for the table container */
+.driver-table {
+  width: 100%;
+  max-width: 1200px;
+  margin: 20px auto;
+  border-collapse: collapse;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  
+}
+
+/* Styling for table header */
+.driver-table th {
+  background-color: rgb(22, 100, 8);
+  color: white;
+  padding: 15px;
+  text-align: left;
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  
+}
+
+/* Styling for table rows */
+.driver-table td {
+  padding: 12px 15px;
+  border-bottom: 1px solid #ddd;
+  font-size: 14px;
+  color: #555;
+}
+
+/* Hover effect for table rows */
+.driver-table tr:hover {
+  background-color: #f4f4f4;
+}
+
+/* Alternate row color */
+.driver-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+/* Style for the profile images */
+.driver-table td img {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;  /* Circular profile images */
+  border: 2px solid #ddd;
+  padding: 2px;
+  box-sizing: border-box;
+  transition: transform 0.3s ease;
+}
+
+/* Add a zoom effect when hovering over the profile image */
+.driver-table td img:hover {
+  transform: scale(1.1);
+}
+
+/* Style for the first column (Profile) */
+.driver-table td:first-child {
+  text-align: center;
+}
+
+/* Responsive table design */
+@media screen and (max-width: 768px) {
+  .driver-table {
+    width: 100%;
+    margin: 10px;
+  }
+
+  .driver-table th, .driver-table td {
+    padding: 10px;
+    font-size: 12px;
+  }
+
+  .driver-table td img {
+    height: 40px;
+    width: 40px;
+  }
+}
+.driver-page h1{
+  font-family: 'Times New Roman', Times, serif;
+  color:rgb(22, 100, 8);
+  margin-left: 160px;
+  
+}
+.driver-page p{
+  font-family: 'Times New Roman', Times, serif;
+  margin-left: 160px;
+  font-size: 20px;
+}
+.driver-page button{
+  
+  background-color: rgb(248, 248, 248);
+  color: rgb(22, 100, 8);
+  font-size: 13px;
+  cursor: pointer;
+  margin-left: 160px;
+  border-radius: 20px;
+  font-family: 'Pacifico', cursive;
+  text-shadow: 2px 2px 4px rgb(23, 232, 72);
+  border: 2px solid rgb(22, 100, 8); 
+  padding: 10px 30px;
+}
+/* Main driver page styles */
+.driver-page {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  background-color: #f4f4f4;
+  color: #333;
+}
+
+.driver-page h1 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.driver-page p {
+  font-size: 1rem;
+  margin-bottom: 20px;
+}
+
+button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+/* Table styles */
+.driver-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.driver-table th, .driver-table td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.driver-table th {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.driver-table td {
+  background-color: #ffffff;
+}
+
+.driver-image {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+/* Modal styles */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.modal-content {
+  background-color: white;
+  padding: 30px;
+  border-radius: 8px;
+  width: 400px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.modal-content h2 {
+  margin-top: 0;
+}
+
+.modal-content label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+.modal-content input[type="text"],
+.modal-content input[type="email"],
+.modal-content input[type="file"] {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+.button-container button{
+  margin: auto;
+  margin-right: 5px;
+}
+
+.preview-image {
+  max-width: 100px;
+  max-height: 100px;
+  border-radius: 8px;
+  margin-top: 10px;
+}
+
+/* Blurring effect when modal is open, only applied to the background */
+.driver-page-blurred {
+  filter: blur(5px);
+}
+
+/* Ensure the modal remains unaffected by the blur */
+.modal-content {
+  position: relative;
+  z-index: 1000; /* Ensure modal content is above the blur */
 }
