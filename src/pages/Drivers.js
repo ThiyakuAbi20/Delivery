@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-import profile1 from '../images/images7.jpg';  // Adjust the path as necessary
+import profile1 from '../images/user.jpg';  // Adjust the path as necessary
 import editIcon from '../images/edit.png';  // Edit icon
 import deleteIcon from '../images/delete.png';  // Delete icon
 
@@ -95,7 +95,7 @@ function Drivers() {
 
   return (
     <div className={`driver-page ${isModalOpen ? 'blurred' : ''}`}>
-      <h1>Drivers Info</h1>
+      <h1>Drivers Info. . .</h1>
       <p>Details about drivers for delivery of parcels on time.</p>
       <button type="button" onClick={handleAddDriverClick}>Add New Driver</button>
 

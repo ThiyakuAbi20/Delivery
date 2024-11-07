@@ -19,7 +19,7 @@ import driver from './images/driver-home.png';
 // Import your page components
 import Drivers from './pages/Drivers';
 import Orders from './pages/Orders';
-import ContactUs from './pages/ContactUs';
+import Tracking from './pages/Tracking';
 
 function App() {
   const images = [brand1, brand2, brand3, brand4];
@@ -42,7 +42,7 @@ function App() {
             <ul>
               <li><Link to="/drivers">Drivers</Link></li>
               <li><Link to="/orders">Orders</Link></li>
-              <li><Link to="/contact">Contact Us</Link></li>
+              <li><Link to="/tracking">Tracking</Link></li>
             </ul>
             <button type="button">Let's Start</button>
           </div>
@@ -99,7 +99,7 @@ function App() {
           } />
           <Route path="/drivers" element={<Drivers />} />
           <Route path="/orders" element={<Orders />} />
-          <Route path="/contact" element={<ContactUs />} />
+          <Route path="/tracking" element={<Tracking />} />
         </Routes>
       </div>
       

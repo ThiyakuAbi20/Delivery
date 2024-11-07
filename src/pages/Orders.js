@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 function Orders() {
-  // State to store orders, drivers, and form visibility
   const [orders, setOrders] = useState([]);
   const [drivers, setDrivers] = useState([]);
   const [showForm, setShowForm] = useState(false);
@@ -38,11 +37,19 @@ function Orders() {
 
     if (availableDriver) {
       axios.put(`http://localhost:3001/orders/${orderId}`, {
-        driver: availableDriver.id,
+        driver: availableDriver._id,
       })
-      .then((response) => {
-        setOrders(prevOrders => prevOrders.map(order => order.id === orderId ? { ...order, driver: availableDriver.id } : order));
-        setDrivers(prevDrivers => prevDrivers.map(driver => driver.id === availableDriver.id ? { ...driver, assigned: true } : driver));
+      .then(() => {
+        setOrders(prevOrders =>
+          prevOrders.map(order =>
+            order._id === orderId ? { ...order, driver: availableDriver._id } : order
+          )
+        );
+        setDrivers(prevDrivers =>
+          prevDrivers.map(driver =>
+            driver._id === availableDriver._id ? { ...driver, assigned: true } : driver
+          )
+        );
       })
       .catch((error) => {
         console.error('Error assigning driver:', error);
@@ -66,16 +73,14 @@ function Orders() {
     e.preventDefault();
     axios.post('http://localhost:3001/orders', newOrder)
       .then((response) => {
-        // Update orders state with the new order
         setOrders(prevOrders => [...prevOrders, response.data]);
-        // Reset the form fields
         setNewOrder({
           customerName: '',
           deliveryAddress: '',
           orderDate: '',
           driverType: '',
         });
-        setShowForm(false); // Close the form
+        setShowForm(false);
       })
       .catch((error) => {
         console.error('Error adding order:', error);
@@ -87,9 +92,7 @@ function Orders() {
       <h1 className="orders-header">Orders List</h1>
 
       {/* Button to toggle form visibility */}
-      <button 
-        onClick={() => setShowForm(!showForm)} 
-        className="add-order-button">
+      <button onClick={() => setShowForm(!showForm)} className="add-order-button">
         {showForm ? 'Cancel' : 'Add Order'}
       </button>
 
@@ -98,41 +101,42 @@ function Orders() {
         <form onSubmit={handleSubmit} className="add-order-form">
           <div>
             <label>Customer Name:</label>
-            <input 
-              type="text" 
-              name="customerName" 
-              value={newOrder.customerName} 
-              onChange={handleInputChange} 
-              required 
+            <input
+              type="text"
+              name="customerName"
+              value={newOrder.customerName}
+              onChange={handleInputChange}
+              required
             />
           </div>
           <div>
             <label>Delivery Address:</label>
-            <input 
-              type="text" 
-              name="deliveryAddress" 
-              value={newOrder.deliveryAddress} 
-              onChange={handleInputChange} 
-              required 
+            <input
+              type="text"
+              name="deliveryAddress"
+              value={newOrder.deliveryAddress}
+              onChange={handleInputChange}
+              required
             />
           </div>
           <div>
             <label>Order Date:</label>
-            <input 
-              type="date" 
-              name="orderDate" 
-              value={newOrder.orderDate} 
-              onChange={handleInputChange} 
-              required 
+            <input
+              type="date"
+              name="orderDate"
+              value={newOrder.orderDate}
+              onChange={handleInputChange}
+              required
             />
           </div>
           <div>
             <label>Order Type:</label>
-            <select 
-              name="driverType" 
-              value={newOrder.driverType} 
-              onChange={handleInputChange} 
-              required>
+            <select
+              name="driverType"
+              value={newOrder.driverType}
+              onChange={handleInputChange}
+              required
+            >
               <option value="">Select Driver Type</option>
               <option value="normal">Normal</option>
               <option value="express">Express</option>
@@ -157,20 +161,20 @@ function Orders() {
         </thead>
         <tbody>
           {orders.map((order) => (
-            <tr key={order.id} className="orders-table-row">
-              <td className="orders-table-cell">{order.id}</td>
+            <tr key={order._id} className="orders-table-row">
+              <td className="orders-table-cell">{order._id}</td>
               <td className="orders-table-cell">{order.customerName}</td>
               <td className="orders-table-cell">{order.deliveryAddress}</td>
               <td className="orders-table-cell">{order.orderDate}</td>
               <td className="orders-table-cell">{order.driverType}</td>
               <td className="orders-table-cell">
-                {order.driver ? 
-                  drivers.find(d => d.id === order.driver)?.name : 
+                {order.driver ?
+                  drivers.find(d => d._id === order.driver)?.name :
                   'Not Assigned'}
               </td>
               <td className="orders-table-cell">
-                <button 
-                  onClick={() => assignDriver(order.id, order.driverType)} 
+                <button
+                  onClick={() => assignDriver(order._id, order.driverType)}
                   className="orders-assign-button"
                   disabled={order.driver} // Disable button if driver already assigned
                 >
