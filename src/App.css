@@ -372,6 +372,7 @@
   border: 2px solid rgb(22, 100, 8); 
   padding: 10px 90px;
 }
+
 /* Style for the table container */
 .driver-table {
   width: 100%;
@@ -650,4 +651,248 @@ button:hover {
 /* Optional: Style for the dropdown button */
 .orders-driver-select option {
   padding: 5px;
+}
+/* Style for the star rating section */
+.star-rating {
+  display: flex;
+  flex-direction: column;
+  margin: 15px 0;
+}
+
+.star-rating label {
+  font-size: 16px;
+  margin-right: 10px;
+}
+
+.stars {
+  display: flex;
+  flex-direction: row; /* Align stars horizontally */
+  justify-content: flex-start; /* Align stars to the left */
+}
+
+.star-label {
+  margin-right: 5px; /* Space between stars */
+}
+
+.star-input {
+  display: none; /* Hide the radio button itself */
+}
+
+.star-input + span {
+  font-size: 30px; /* Make the star bigger */
+  cursor: pointer;
+  color: #ccc; /* Gray color for inactive stars */
+}
+
+.star-input:checked + span {
+  color: #f39c12; /* Golden color for checked stars */
+}
+.ReviewList h2{
+  color: #0c692d;
+  font-family: 'Times New Roman', Times, serif;
+  margin: 30px;
+}
+.ReviewList p{
+  margin-bottom: 10px;
+  margin-left: 50px;
+  font-family: 'Times New Roman', Times, serif;
+
+}
+.delete-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background-color 0.3s ease;
+}
+
+.delete-button:hover {
+  background-color: #f5f5f5; /* Light gray background on hover */
+}
+
+.delete-icon {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+/* Global Styles */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f9;
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  font-size: 2rem;
+  color: #111010;
+  margin-bottom: 0.5rem;
+}
+
+p {
+  color: #666;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+button {
+  background-color: #1c7a40;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+
+
+/* Page Layout */
+.order-page {
+  margin: 20px;
+}
+.order-page h1{
+  font-family: 'Times New Roman', Times, serif;
+  color:rgb(22, 100, 8);
+  margin-left: 160px;
+  
+}
+.order-page p{
+  font-family: 'Times New Roman', Times, serif;
+  margin-left: 160px;
+  font-size: 17px;
+}
+.order-page button{
+  
+  background-color: rgb(248, 248, 248);
+  color: rgb(22, 100, 8);
+  font-size: 13px;
+  cursor: pointer;
+  margin-left: 160px;
+  border-radius: 20px;
+  font-family: 'Pacifico', cursive;
+  text-shadow: 2px 2px 4px rgb(23, 232, 72);
+  border: 2px solid rgb(22, 100, 8); 
+  padding: 10px 30px;
+}
+
+.order-table {
+  width: 80%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  margin-left: 160px;
+}
+
+.order-table th{
+  padding: 10px;
+  text-align: left;
+  align-content: center;
+  text-transform: uppercase;
+}
+
+.order-table th {
+  background-color:  #0c692d;
+  color: white;
+  align-content: center;
+  
+}
+
+.order-table tr:hover {
+  background-color: #f1f1f1;
+}
+
+.action-icon {
+  width: 40px;
+  height: 40px;
+  margin-top: 10px;
+  margin-left: 5px;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+
+.action-icon:hover {
+  opacity: 0.7;
+}
+
+/* Modal Styles */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  width: 400px;
+  max-width: 100%;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.modal h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+input[type="text"],
+input[type="email"] {
+  padding: 10px;
+  margin: 5px 0 10px 0;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+
+input[type="checkbox"] {
+  margin-right: 5px;
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.button-container button {
+  width: 48%;
+  font-size: 1rem;
+  padding: 10px 0;
+}
+
+button[type="submit"] {
+  background-color: #28a745;
+}
+
+button[type="submit"]:hover {
+  background-color: #218838;
+}
+
+
+
+.error-message {
+  color: red;
+  font-size: 0.9rem;
+  margin-bottom: 10px;
 }

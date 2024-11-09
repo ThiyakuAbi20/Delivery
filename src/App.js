@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import './App.css';
 import logo from './images/logo1.png';
@@ -16,10 +16,11 @@ import email from './images/email.png';
 import phone from './images/phone.png';
 import driver from './images/driver-home.png';
 
-// Import your page components
 import Drivers from './pages/Drivers';
 import Orders from './pages/Orders';
 import Tracking from './pages/Tracking';
+import ReviewForm from './components/ReviewForm';
+import ReviewList from './components/ReviewList';
 
 function App() {
   const images = [brand1, brand2, brand3, brand4];
@@ -36,8 +37,8 @@ function App() {
     <Router>
       <div className="header">
         <div className="App">
-          <div className="navbar">
-            <img src={logo} alt="logo image" />
+          <nav className="navbar">
+            <img src={logo} alt="logo" />
             <h3><Link to="/">Delivery Portal</Link></h3>
             <ul>
               <li><Link to="/drivers">Drivers</Link></li>
@@ -45,56 +46,26 @@ function App() {
               <li><Link to="/tracking">Tracking</Link></li>
             </ul>
             <button type="button">Let's Start</button>
-          </div>
+          </nav>
         </div>
 
-        {/* Main content area */}
         <Routes>
           <Route path="/" element={
             <>
               <div className="imagebar">
-                <img src={homePage} alt="grocery image" />
+                <img src={homePage} alt="grocery" />
                 <button type="button">Find Drivers</button>
                 <h4>Quickly identify available drivers to streamline your delivery operations and enhance efficiency.</h4>
               </div>
 
-              <div className='textbar'>
-                <div className='text1bar'>
-                  <h2>Drivers</h2>
-                  <h1>Our Masterpieces</h1>
-                  <p>At Northway, we pride ourselves on delivering exceptional service and quality. Our skilled drivers ensure timely deliveries, while our masterpieces showcase the finest craftsmanship and design. Together, they embody our commitment to excellence and customer satisfaction.</p>
-                </div>
-                <div className='text2bar'>
-                  <h3>Mission Statement</h3>
-                  <p>Our mission is to provide our community with fresh, high-quality groceries at competitive prices while prioritizing exceptional customer service. We are committed to supporting local farmers and sustainable practices, ensuring that our customers can find not only the essentials but also unique products that enhance their everyday lives. We strive to create a welcoming environment where customers feel valued and inspired to make healthy choices for themselves and their families.</p>
-                </div>
-                <div className='text3bar'>
-                  <h3>Vision Statement</h3>
-                  <p>Our vision is to be the leading grocery destination in our community, recognized for our commitment to quality, sustainability, and innovation. We envision a shopping experience that fosters community connections, promotes healthy living, and inspires our customers to explore new culinary adventures. By continually evolving and adapting to the needs of our customers, we aim to set the standard for excellence in the grocery industry.</p>
-                </div>
-              </div>
-
               <div className='form-and-slider'>
-                <div className='Formstyle'>
-                  <h2>Add Your Driver Review . . .</h2>
-                  <form>
-                    <label htmlFor="review">Your Driver Review :</label>
-                    <textarea id="review" name="review" rows="4" cols="50" placeholder="Write your review here..."></textarea>
-
-                    <label htmlFor="name">Name :</label>
-                    <input type="text" id="name" name="name" placeholder="Enter your name" required />
-
-                    <label htmlFor="email">Email :</label>
-                    <input type="email" id="email" name="email" placeholder="Enter your email" required />
-
-                    <button type="submit">Add Review</button>
-                  </form>
-                </div>
-
+                <ReviewForm />
                 <div className='imageslider'>
                   <img src={images[currentIndex]} alt={`brand${currentIndex + 1}`} className="slider-image" />
                 </div>
               </div>
+
+              <ReviewList />
             </>
           } />
           <Route path="/drivers" element={<Drivers />} />
@@ -102,8 +73,8 @@ function App() {
           <Route path="/tracking" element={<Tracking />} />
         </Routes>
       </div>
-      
-      <div className='footer'>
+
+      <footer className='footer'>
         <div className='footer-content'>
           <div className='left-section'>
             <h4>Follow Us</h4>
@@ -144,10 +115,9 @@ function App() {
         </div>
 
         <div className='footer-bottom'>
-          <p>&copy; 2024 Northway Family Mart. All rights reserved.</p>
+          <p>© 2024 All Rights Reserved. Northway Family Mart</p>
         </div>
-      </div>
-     
+      </footer>
     </Router>
   );
 }
